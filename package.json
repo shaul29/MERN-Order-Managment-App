@@ -17,9 +17,12 @@
   },
   "scripts": {
     "start": "node backend/server",
-    "server": "nodemon backend/server"
+    "server": "nodemon backend/server",
+    "client": "yarn --cwd order-managment-app start",
+    "dev": "concurrently -k \"yarn server\" \"yarn client\""
   },
   "devDependencies": {
+    "concurrently": "^6.0.2",
     "nodemon": "^2.0.7"
   }
 }
