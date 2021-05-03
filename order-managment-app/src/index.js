@@ -5,10 +5,11 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux'
 import store from './store'
 import { ChakraProvider } from "@chakra-ui/react"
+import { myNewTheme } from './theme';
 
 
 ReactDOM.render(
-  <ChakraProvider>
+  <ChakraProvider theme={myNewTheme}>
     <Provider store={store}>
       <App />
     </Provider>

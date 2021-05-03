@@ -46,9 +46,7 @@ export const login = (email, password) => async (dispatch) => {
 
 export const logout = () => (dispatch) => {
     localStorage.removeItem('userInfo')
-    localStorage.removeItem('todos')
     dispatch({ type: USER_LOGOUT })
-    dispatch({ type: TODO_LIST_MY_RESET })
 }
 
 export const register = (name, email, password) => async (dispatch) => {
