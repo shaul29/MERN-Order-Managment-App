@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import Navbar from '../components/Navbar.component'
+import Navbar from '../../components/Navbar.component'
 
 const ProductsScreen = () => {
     return (

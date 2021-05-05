@@ -1,11 +1,13 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import { Switch, Route, BrowserRouter as Router, Redirect } from 'react-router-dom';
-import ClientsScreen from './screens/ClientsScreen';
+import ClientsScreen from './screens/client/ClientsScreen';
 import OrdersScreen from './screens/OrdersScreen'
 import LoginScreen from './screens/LoginScreen'
-import ProductsScreen from './screens/ProductsScreen';
+import ProductsScreen from './screens/product/ProductsScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import CreateClientScreen from './screens/client/CreateClientScreen';
+import EditClientScreen from './screens/client/EditClientScreen';
 
 
 function App() {
@@ -48,6 +50,28 @@ function App() {
                 <Redirect to='/login' />
               ) : (
                 <ProductsScreen />
+              )
+            }
+          />
+          <Route
+            exact
+            path='/clients/create'
+            render={() =>
+              !userInfo ? (
+                <Redirect to='/login' />
+              ) : (
+                <CreateClientScreen />
+              )
+            }
+          />
+          <Route
+            exact
+            path='/clients/edit/:id'
+            render={() =>
+              !userInfo ? (
+                <Redirect to='/login' />
+              ) : (
+                <EditClientScreen />
               )
             }
           />

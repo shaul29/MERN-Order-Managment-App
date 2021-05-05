@@ -10,6 +10,10 @@ const Loader = () => {
   emptyColor="gray.200"
   color="primary"
   size="xl"
+  position= "fixed"
+   top= "50%"
+   left= "50%"
+   transform= "translate(-50%, -50%)"
 />
     )
 }
