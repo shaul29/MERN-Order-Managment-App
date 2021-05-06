@@ -22,7 +22,13 @@ const Navbar = () => {
          <Text color="white" align="center" fontSize="2xl">Products</Text>
          </Link>
          <Link to='/'>
-         <Text color="white" align="center" fontSize="2xl">Orders</Text>
+         <Text color="white" align="center" fontSize="2xl" >Orders</Text>
+         </Link>
+         <Link to='/clients/create'>
+         <Text color="white" align="center" fontSize="2xl" mt="40px">Create Client</Text>
+         </Link>
+         <Link to='/products/create'>
+         <Text color="white" align="center" fontSize="2xl" >Create Product</Text>
          </Link>
          </VStack>
      </Box> : <Menu>

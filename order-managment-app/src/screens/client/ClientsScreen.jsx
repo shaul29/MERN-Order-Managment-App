@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect } from 'react'
-import Navbar from '../../components/Navbar.component'
 import Head from '../../components/Head.Component'
 import { Box, Flex, VStack} from '@chakra-ui/layout'
 import Content from '../../components/Content.Component'
@@ -29,18 +28,16 @@ const ClientsScreen = () => {
         
     }, [ dispatch])
 
-    if(loading ) {
-        return (
-        <Loader />
-        )
-    }
+   if(loading){
+       return <Loader />
+   }
 
     return (
        <Fragment>
            {error && <Message status='error' errorMessage={error} />}
             <Flex>
                  <Box>
-                      <Navbar/>
+                    
                   </Box>
                      <Box>
                            <VStack>

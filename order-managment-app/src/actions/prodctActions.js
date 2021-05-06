@@ -1,21 +1,21 @@
 import {
-    CLIENT_LIST_MY_REQUEST,
-    CLIENT_LIST_MY_SUCCESS,
-    CLIENT_LIST_MY_FAIL,
-    CLIENT_DELETE_FAIL,
-    CLIENT_DELETE_SUCCESS,
-    CLIENT_DELETE_REQUEST,
-    CLIENT_CREATE_FAIL,
-    CLIENT_CREATE_SUCCESS,
-    CLIENT_CREATE_REQUEST,
-    CLIENT_CREATE_RESET,
-} from '../constants/clientConstants'
+    PRODUCT_LIST_MY_REQUEST,
+    PRODUCT_LIST_MY_SUCCESS,
+    PRODUCT_LIST_MY_FAIL,
+    PRODUCT_DELETE_FAIL,
+    PRODUCT_DELETE_SUCCESS,
+    PRODUCT_DELETE_REQUEST,
+    PRODUCT_CREATE_FAIL,
+    PRODUCT_CREATE_SUCCESS,
+    PRODUCT_CREATE_REQUEST,
+    PRODUCT_CREATE_RESET,
+} from '../constants/productConstants'
 import axios from 'axios'
 
-export const listMyClients = () => async (dispatch, getState) => {
+export const listMyProducts = () => async (dispatch, getState) => {
     try {
         dispatch({
-            type: CLIENT_LIST_MY_REQUEST,
+            type: PRODUCT_LIST_MY_REQUEST,
         })
 
         const {
@@ -28,15 +28,15 @@ export const listMyClients = () => async (dispatch, getState) => {
             },
         }
 
-        const { data } = await axios.get(`/api/client/myClients`, config)
+        const { data } = await axios.get(`/api/product/myProducts`, config)
 
         dispatch({
-            type: CLIENT_LIST_MY_SUCCESS,
+            type: PRODUCT_LIST_MY_SUCCESS,
             payload: data,
         })
     } catch (error) {
         dispatch({
-            type: CLIENT_LIST_MY_FAIL,
+            type: PRODUCT_LIST_MY_FAIL,
             payload:
                 error.response && error.response.data.message
                     ? error.response.data.message
@@ -45,10 +45,10 @@ export const listMyClients = () => async (dispatch, getState) => {
     }
 }
 
-export const deleteClient = (id) => async (dispatch, getState) => {
+export const deleteProduct = (id) => async (dispatch, getState) => {
     try {
         dispatch({
-            type: CLIENT_DELETE_REQUEST,
+            type: PRODUCT_DELETE_REQUEST,
         })
 
         const {
@@ -61,15 +61,15 @@ export const deleteClient = (id) => async (dispatch, getState) => {
             },
         }
 
-        await axios.delete(`/api/client/${id}`, config)
+        await axios.delete(`/api/product/${id}`, config)
 
         dispatch({
-            type: CLIENT_DELETE_SUCCESS
+            type: PRODUCT_DELETE_SUCCESS
         })
-        dispatch(listMyClients())
+        dispatch(listMyProducts())
     } catch (error) {
         dispatch({
-            type: CLIENT_DELETE_FAIL,
+            type: PRODUCT_DELETE_FAIL,
             payload:
                 error.response && error.response.data.message
                     ? error.response.data.message
@@ -78,10 +78,10 @@ export const deleteClient = (id) => async (dispatch, getState) => {
     }
 }
 
-export const createClient = (client) => async (dispatch, getState) => {
+export const createProduct = (product) => async (dispatch, getState) => {
     try {
         dispatch({
-            type: CLIENT_CREATE_REQUEST,
+            type: PRODUCT_CREATE_REQUEST,
         })
 
         const {
@@ -95,18 +95,18 @@ export const createClient = (client) => async (dispatch, getState) => {
             },
         }
 
-        const { data } = await axios.post(`/api/client`, client, config)
+        const { data } = await axios.post(`/api/product`, product, config)
 
         dispatch({
-            type: CLIENT_CREATE_SUCCESS,
+            type: PRODUCT_CREATE_SUCCESS,
             payload: data,
         })
         dispatch({
-            type: CLIENT_CREATE_RESET
+            type: PRODUCT_CREATE_RESET
         })
     } catch (error) {
         dispatch({
-            type: CLIENT_CREATE_FAIL,
+            type: PRODUCT_CREATE_FAIL,
             payload:
                 error.response && error.response.data.message
                     ? error.response.data.message

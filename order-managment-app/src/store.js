@@ -7,15 +7,24 @@ import {
 } from './reducers/userReducers'
 import {
     clientListMyReducer,
-    clientDeleteReducer
+    clientDeleteReducer,
+    clientCreateReducer
 } from './reducers/clientReducers'
-
+import {
+    productListMyReducer,
+    productDeleteReducer,
+    productreateReducer
+} from './reducers/productReducers'
 
 const reducer = combineReducers({
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
     clientListMy: clientListMyReducer,
     clientDelete: clientDeleteReducer,
+    clientCreate: clientCreateReducer,
+    productListMy: productListMyReducer,
+    productDelete: productDeleteReducer,
+    productCreate: productreateReducer,
 })
 
 

@@ -4,15 +4,22 @@ import React from 'react'
 import { TiDeleteOutline } from 'react-icons/ti'
 import { FiEdit } from 'react-icons/fi'
 import { Link, useLocation } from 'react-router-dom'
+import Message from './Message.component'
+import { useSelector } from 'react-redux'
+
 
 const Value= (props) => {
-    const { name, prop1, prop2, deleteAction, itemId } = props
+    const { name, prop1, prop2, deleteAction, itemId} = props
 
     const location = useLocation();
+
+    const clientDelete = useSelector((state) => state.clientDelete)
+    const {error} = clientDelete
 
 
     return (
 <Grid templateColumns="repeat(5, 1fr)" >
+    {error && <Message status='error' errorMessage={error} />}
   <Box w="100%" h="12" borderWidth="1px" borderStyle="solid" borderColor="grei">
       <Box pt="10px">
       <Text>{name}</Text>

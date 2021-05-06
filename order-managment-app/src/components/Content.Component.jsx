@@ -17,10 +17,10 @@ const Content = (props) => {
                     <Text color="white" fontWeight="bold">{prop2}</Text>
                 </Box>
                 <Box>
-                    <Text color="white" fontWeight="bold">Editar</Text>
+                    <Text color="white" fontWeight="bold">Eliminar</Text>
                 </Box>
                 <Box>
-                    <Text color="white" fontWeight="bold">Eliminar</Text>
+                    <Text color="white" fontWeight="bold">Editar</Text>
                 </Box>
             </HStack>
             </Center>

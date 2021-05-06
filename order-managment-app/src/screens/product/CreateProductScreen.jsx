@@ -1,10 +1,10 @@
 import { Box, Flex, VStack } from '@chakra-ui/layout'
 import React, { Fragment } from 'react'
-import ClientForm from '../../components/ClientForm.component'
+import ProductForm from '../../components/ProductForm.component'
 import Head from '../../components/Head.Component'
 import Title from '../../components/Title.component'
 
-const CreateClientScreen = () => {
+const CreateProductScreen = () => {
     return (
        <Fragment>
             <Flex>
@@ -17,11 +17,11 @@ const CreateClientScreen = () => {
                                        <Head />
                                   </Box>
                                     <Box>
-                                        <Title title={'New Client'}  />
+                                        <Title title={'New Product'}  />
                                     </Box>
                                     <Box bg="#EDF2F7" w="450px"   borderRadius="20px">
                                          <Box p="15px">
-                                        <ClientForm />
+                                        <ProductForm />
                                         </Box> 
                                     </Box>
                          </VStack>
@@ -31,4 +31,4 @@ const CreateClientScreen = () => {
     )
 }
 
-export default CreateClientScreen
+export default CreateProductScreen

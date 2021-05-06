@@ -57,8 +57,8 @@ const updateProduct = asyncHandler(async (req, res) => {
     }
 })
 
-// @desc    Delete a client
-// @route   DELETE /api/client/:id
+// @desc    Delete a product
+// @route   DELETE /api/product/:id
 // @access  Private
 const deleteProduct = asyncHandler(async (req, res) => {
     const product = await Product.findById(req.params.id)
