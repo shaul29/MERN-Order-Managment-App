@@ -8,6 +8,7 @@ import { ChakraProvider } from "@chakra-ui/react"
 import { myNewTheme } from './theme';
 
 
+
 ReactDOM.render(
   <ChakraProvider theme={myNewTheme}>
     <Provider store={store}>

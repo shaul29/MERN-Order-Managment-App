@@ -19,7 +19,7 @@ const CreateClientScreen = () => {
                                     <Box>
                                         <Title title={'New Client'}  />
                                     </Box>
-                                    <Box bg="#EDF2F7" w="450px"   borderRadius="20px">
+                                    <Box shadow="md" borderWidth="1px" w="lg"  >
                                          <Box p="15px">
                                         <ClientForm />
                                         </Box> 

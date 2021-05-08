@@ -4,9 +4,17 @@ import React from 'react'
 import { Menu, MenuButton, MenuItem, MenuList, Portal, useMediaQuery } from "@chakra-ui/react"
 import { FiMenu } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { logout } from '../actions/userActions'
 
 const Navbar = () => {
-  const [isLargerThan480] = useMediaQuery("(min-width: 580px)")
+  const [isLargerThan480] = useMediaQuery("(min-width: 800px)")
+
+  const dispatch = useDispatch()
+
+  const logoutHandler = () => {
+    dispatch(logout())
+}
 
     return (
         <>
@@ -49,6 +57,7 @@ const Navbar = () => {
       <Link to='/'>
       <MenuItem>Orders</MenuItem>
       </Link>
+      <MenuItem onClick={logoutHandler}>Logout</MenuItem>
     </MenuList>
   </Portal>
 </Menu>

@@ -8,14 +8,18 @@ import Order from '../models/orderModel.js'
 const createOrder = asyncHandler(async (req, res) => {
     const {
         client,
-        product,
-        quantity,
+        phone,
+        mail,
+        orderItems,
+        price
     } = req.body
 
     const newOrder = new Order({
         client,
-        product,
-        quantity,
+        phone,
+        mail,
+        orderItems,
+        price,
         user: req.user._id,
     })
 

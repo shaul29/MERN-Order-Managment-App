@@ -101,6 +101,7 @@ export const createProduct = (product) => async (dispatch, getState) => {
             type: PRODUCT_CREATE_SUCCESS,
             payload: data,
         })
+
         dispatch({
             type: PRODUCT_CREATE_RESET
         })

@@ -13,8 +13,15 @@ import {
 import {
     productListMyReducer,
     productDeleteReducer,
-    productreateReducer
+    productCreateReducer
 } from './reducers/productReducers'
+
+import {
+    orderListMyReducer,
+    orderDeleteReducer,
+    orderCreateReducer,
+    orderUpdateReducer
+} from './reducers/orderReducers'
 
 const reducer = combineReducers({
     userLogin: userLoginReducer,
@@ -24,7 +31,11 @@ const reducer = combineReducers({
     clientCreate: clientCreateReducer,
     productListMy: productListMyReducer,
     productDelete: productDeleteReducer,
-    productCreate: productreateReducer,
+    productCreate: productCreateReducer,
+    orderListMy: orderListMyReducer,
+    orderDelete: orderDeleteReducer,
+    orderCreate: orderCreateReducer,
+    orderUpdate: orderUpdateReducer
 })
 
 
@@ -32,9 +43,8 @@ const userInfoFromStorage = localStorage.getItem('userInfo')
     ? JSON.parse(localStorage.getItem('userInfo'))
     : null
 
-
 const initialState = {
-    userLogin: { userInfo: userInfoFromStorage },
+    userLogin: { userInfo: userInfoFromStorage }
 }
 
 const middleware = [thunk]

@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from 'react'
 import Head from '../../components/Head.Component'
-import { Box, Flex, VStack} from '@chakra-ui/layout'
+import { Box, VStack} from '@chakra-ui/layout'
 import Content from '../../components/Content.Component'
 import Title from '../../components/Title.component'
 import Value from '../../components/Value.component'
@@ -35,11 +35,6 @@ const ClientsScreen = () => {
     return (
        <Fragment>
            {error && <Message status='error' errorMessage={error} />}
-            <Flex>
-                 <Box>
-                    
-                  </Box>
-                     <Box>
                            <VStack>
                               <Box h="100px">
                                   <Head />
@@ -60,8 +55,6 @@ const ClientsScreen = () => {
                                              )}
                                           </Box>
                            </VStack>
-                       </Box>
-            </Flex>
      </Fragment>
     )
 }

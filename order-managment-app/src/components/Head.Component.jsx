@@ -13,7 +13,7 @@ function Head() {
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
 
-    const [isLargerThan480] = useMediaQuery("(min-width: 580px)")
+    const [isLargerThan480] = useMediaQuery("(min-width: 800px)")
 
     const logoutHandler = () => {
         dispatch(logout())

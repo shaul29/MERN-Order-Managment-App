@@ -101,6 +101,7 @@ export const createClient = (client) => async (dispatch, getState) => {
             type: CLIENT_CREATE_SUCCESS,
             payload: data,
         })
+
         dispatch({
             type: CLIENT_CREATE_RESET
         })

@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import { Switch, Route, BrowserRouter as Router, Redirect } from 'react-router-dom';
 import ClientsScreen from './screens/client/ClientsScreen';
-import OrdersScreen from './screens/OrdersScreen'
+import OrdersScreen from './screens/order/OrdersScreen'
 import LoginScreen from './screens/LoginScreen'
 import ProductsScreen from './screens/product/ProductsScreen';
 import RegisterScreen from './screens/RegisterScreen';

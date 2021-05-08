@@ -6,11 +6,27 @@ const orderSchema = mongoose.Schema(
             type: String,
             required: true,
         },
-        product: {
+        phone: {
+            type: Number,
+            required: true,
+        },
+        mail: {
             type: String,
             required: true,
         },
-        quantity: {
+        orderItems: [
+            {
+                item: {
+                    type: String,
+                    required: true
+                },
+                quantity: {
+                    type: String,
+                    required: true
+                }
+            }
+        ],
+        price: {
             type: Number,
             required: true,
         },
