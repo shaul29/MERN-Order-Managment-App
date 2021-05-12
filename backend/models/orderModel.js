@@ -2,18 +2,19 @@ import mongoose from 'mongoose'
 
 const orderSchema = mongoose.Schema(
     {
-        client: {
+        clientName: {
             type: String,
             required: true,
         },
-        phone: {
-            type: Number,
-            required: true,
-        },
-        mail: {
+        clientEmail: {
             type: String,
             required: true,
         },
+        clientPhone: {
+            type: String,
+            required: true,
+        },
+
         orderItems: [
             {
                 item: {

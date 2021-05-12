@@ -8,7 +8,8 @@ import {
 import {
     clientListMyReducer,
     clientDeleteReducer,
-    clientCreateReducer
+    clientCreateReducer,
+    clientListOneReducer
 } from './reducers/clientReducers'
 import {
     productListMyReducer,
@@ -35,7 +36,8 @@ const reducer = combineReducers({
     orderListMy: orderListMyReducer,
     orderDelete: orderDeleteReducer,
     orderCreate: orderCreateReducer,
-    orderUpdate: orderUpdateReducer
+    orderUpdate: orderUpdateReducer,
+    clientListOne: clientListOneReducer
 })
 
 

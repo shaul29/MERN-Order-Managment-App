@@ -7,17 +7,17 @@ import Order from '../models/orderModel.js'
 
 const createOrder = asyncHandler(async (req, res) => {
     const {
-        client,
-        phone,
-        mail,
+        clientName,
+        clientEmail,
+        clientPhone,
         orderItems,
         price
     } = req.body
 
     const newOrder = new Order({
-        client,
-        phone,
-        mail,
+        clientName,
+        clientEmail,
+        clientPhone,
         orderItems,
         price,
         user: req.user._id,
@@ -72,5 +72,5 @@ export {
     createOrder,
     getMyOrders,
     updateOrderToDelivered,
-    deleteOrder
+    deleteOrder,
 }

@@ -80,10 +80,19 @@ const deleteClient = asyncHandler(async (req, res) => {
     }
 })
 
+// @desc    Get a client by id
+// @route   GET/api/client/:id
+// @access  public
+const getSingleClient = asyncHandler(async (req, res) => {
+    const client = await Client.findById(req.params.id)
+    res.json(client)
+})
+
 
 export {
     createClient,
     getMyClients,
     updateclient,
-    deleteClient
+    deleteClient,
+    getSingleClient
 }

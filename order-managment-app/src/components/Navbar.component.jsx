@@ -38,6 +38,9 @@ const Navbar = () => {
          <Link to='/products/create'>
          <Text color="white" align="center" fontSize="2xl" >Create Product</Text>
          </Link>
+         <Link to='/orders/create'>
+         <Text color="white" align="center" fontSize="2xl" >Create Order</Text>
+         </Link>
          </VStack>
      </Box> : <Menu>
      <MenuButton

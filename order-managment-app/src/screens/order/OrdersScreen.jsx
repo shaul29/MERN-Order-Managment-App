@@ -51,18 +51,18 @@ const OrdersScreen = () => {
                  {deleteError && <Message status='error' errorMessage={error} />}
                  <Box pl={5} >
                      {orders.map((order) => (
-                <Box p={5} shadow="md" borderWidth="1px" w={[300, 500, 1070]} h="40vh" overflow= "hiden" >
+                <Box p={5} shadow="md" borderWidth="1px" w={[300, 500, 1070]} h="40vh" overflow= "hiden" key={order._id}>
                         <Flex >
                             <Box>
                                 <VStack>
-                                    <Text color="secondary" fontWeight="bold"> {`Client: ${order.client}`} </Text>
+                                    <Text color="secondary" fontWeight="bold"> {`Client: ${order.clientName}`} </Text>
                                     <HStack>
                                         <AiOutlineMail />
-                                        <Text fontWeight="semibold" >{order.mail}</Text>
+                                        <Text fontWeight="semibold" >{order.clientEmail}</Text>
                                     </HStack>
                                     <HStack>
                                         <FiPhone />
-                                        <Text fontWeight="semibold" >{order.phone}</Text>
+                                        <Text fontWeight="semibold" >{order.clientPhone}</Text>
                                     </HStack>
                                     <Text pt="35px" color="secondary" fontWeight="bold">Estado de pedido</Text>
                                     <Button
@@ -80,7 +80,7 @@ const OrdersScreen = () => {
                                 <VStack>
                                     <Text color="secondary" fontWeight="bold">Resumen Pedido</Text>
                                     {order.orderItems.map((i) => (
-                                        <VStack spacing="2px">
+                                        <VStack spacing="2px" key={i._id}>
                                             <Text fontWeight="semibold" fontSize="sm">{`Product: ${i.item}`}</Text>
                                             <Text fontWeight="semibold" fontSize="sm">{`Quantity: ${i.quantity}`}</Text>
                                         </VStack>

@@ -9,6 +9,9 @@ import {
     CLIENT_CREATE_SUCCESS,
     CLIENT_CREATE_REQUEST,
     CLIENT_CREATE_RESET,
+    CLIENT_LIST_ONE_REQUEST,
+    CLIENT_LIST_ONE_SUCCESS,
+    CLIENT_LIST_ONE_FAIL,
 } from '../constants/clientConstants'
 import axios from 'axios'
 
@@ -37,6 +40,39 @@ export const listMyClients = () => async (dispatch, getState) => {
     } catch (error) {
         dispatch({
             type: CLIENT_LIST_MY_FAIL,
+            payload:
+                error.response && error.response.data.message
+                    ? error.response.data.message
+                    : error.message,
+        })
+    }
+}
+
+export const listOneClient = (id) => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: CLIENT_LIST_ONE_REQUEST,
+        })
+
+        const {
+            userLogin: { userInfo },
+        } = getState()
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`,
+            },
+        }
+
+        const { data } = await axios.get(`/api/client/${id}`, config)
+
+        dispatch({
+            type: CLIENT_LIST_ONE_SUCCESS,
+            payload: data,
+        })
+    } catch (error) {
+        dispatch({
+            type: CLIENT_LIST_ONE_FAIL,
             payload:
                 error.response && error.response.data.message
                     ? error.response.data.message

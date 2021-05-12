@@ -4,7 +4,7 @@ import {
     createOrder,
     deleteOrder,
     getMyOrders,
-    updateOrderToDelivered
+    updateOrderToDelivered,
 } from '../controllers/orderController.js'
 import { protect } from '../middleware/authMiddleware.js'
 
