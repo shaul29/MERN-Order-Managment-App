@@ -64,7 +64,7 @@ const OrdersScreen = () => {
                                         <FiPhone />
                                         <Text fontWeight="semibold" >{order.clientPhone}</Text>
                                     </HStack>
-                                    <Text pt="35px" color="secondary" fontWeight="bold">Estado de pedido</Text>
+                                    <Text pt="35px" color="secondary" fontWeight="bold">Order State</Text>
                                     <Button
                                      bg="secondary" 
                                     _hover="null" 
@@ -78,14 +78,14 @@ const OrdersScreen = () => {
                              <Spacer />
                             <Box pr="150px">
                                 <VStack>
-                                    <Text color="secondary" fontWeight="bold">Resumen Pedido</Text>
+                                    <Text color="secondary" fontWeight="bold">Order Information</Text>
                                     {order.orderItems.map((i) => (
                                         <VStack spacing="2px" key={i._id}>
                                             <Text fontWeight="semibold" fontSize="sm">{`Product: ${i.item}`}</Text>
                                             <Text fontWeight="semibold" fontSize="sm">{`Quantity: ${i.quantity}`}</Text>
                                         </VStack>
                                     ))}
-                                    <Text 
+                                    <Text  
                                     pt="15px" 
                                     color="secondary" 
                                     fontWeight="bold">
@@ -95,7 +95,7 @@ const OrdersScreen = () => {
                                      bg="delete" 
                                     _hover="null" 
                                     onClick={() => {deleteHandler(order._id)}}>
-                                        <Text color="white" fontWeight="delete">Eliminar Pedido</Text>
+                                        <Text color="white" fontWeight="delete">Delete Order</Text>
                                     </Button>
                                 </VStack>
                             </Box>

@@ -27,14 +27,15 @@ const OrderForm = () => {
     const orderCreate = useSelector((state) => state.orderCreate)
     const {loading, error, success} = orderCreate
 
-    const clientListMy = useSelector((state) => state.clientListMy)
+    const clientListMy = useSelector((state) => state.clientListMy)                          
     const { loading: loadingClients, error:errorClients, clients} = clientListMy
 
     const productList = useSelector((state) => state.productListMy)
     const { loading: loadingProducts, error:errorProduct, products} = productList
 
+
     const clientListOne = useSelector((state) => state.clientListOne)
-    const { loading: loadingClient, client, error:errorClient} = clientListOne
+    const { client, error:errorClient} = clientListOne
 
     useEffect(() => {
         dispatch(listMyClients())
@@ -51,6 +52,7 @@ const OrderForm = () => {
     }, [ dispatch, myClient])
 
 
+
     const submitHandler = (e) => {
         e.preventDefault()
         dispatch(
@@ -62,7 +64,8 @@ const OrderForm = () => {
                     product.map((item) => (
                         {   key:item[3],
                             item:item[0],
-                            quantity:quantity
+                            quantity:quantity.find(qty => qty.id === item[3]).qty,
+                            itemId:item[3]
                         }
                     )),
                 price:price
@@ -73,13 +76,26 @@ const OrderForm = () => {
         const submitProducts = (e) => {
             setProduct(Array.isArray(e) ? e.map((e) => e.value) : [])
         }
+
+
+        const addQuantity = (id, qty) => {
+            setQuantity([
+              {
+                id: id,
+                qty: qty
+              },
+              ...quantity,
+            ]);
+          };
+
+          console.log(quantity)
+
         
-        
-    if(loadingClient || loading || loadingClients || loadingProducts  ) {
+    if( loading || loadingClients || loadingProducts  ) {
     return <Loader />
          }
+
     
- 
     return  error || errorClients || errorProduct || errorClient ? (
         <Message status='error' errorMessage={error} />
     ) : success ? <Redirect to="/" />  : (
@@ -106,7 +122,7 @@ const OrderForm = () => {
                     products.map((item) => 
                       (
                           {
-                              value: [item.name, item.price, item.stock, item._id], 
+                              value: [item.name, item.price, item.stock, item._id, item.orderQty], 
                               label: `${item.name} - ${item.stock} in stock`, 
                               key:item._id
                           }
@@ -117,19 +133,24 @@ const OrderForm = () => {
                   />
           </FormControl>
           <FormControl id="quantity" >
-              <FormLabel>Quantity</FormLabel>
               {product.map((item) => (
-                  <HStack pb="8px" key={item._id}>
+                  <HStack pb="8px" key={item[3]}>
                       <Box>
                           <VStack spacing="0px">
                               <Text>{item[0]}</Text>
                               <Text>{`$${item[1]}`}</Text>
                           </VStack>
                       </Box>
-                      <Input
+                    <Select
                       placeholder='Product Quantity'
-                      value={quantity}
-                      onChange={(e) => setQuantity( e.target.value)} />
+                      onChange={(e) => addQuantity(item[3], e.target.value)}
+                       >
+                         {[...Array(parseInt(item[2])).keys()].map((x) => (
+                                 <option key={x + 1} value={x + 1}>
+                                           {x + 1}
+                                  </option>
+                            ))}
+                    </Select>
                   </HStack>
               ))}
           </FormControl>

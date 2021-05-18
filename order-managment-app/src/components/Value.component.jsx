@@ -20,7 +20,7 @@ const Value= (props) => {
     return (
 <Grid templateColumns="repeat(5, 1fr)" >
     {error && <Message status='error' errorMessage={error} />}
-  <Box w="100%" h="12" borderWidth="1px" borderStyle="solid" borderColor="grei">
+  <Box w="100%" h="12" borderWidth="1px" borderStyle="solid" borderColor="grei" >
       <Box pt="10px">
       <Text>{name}</Text>
       </Box>
@@ -55,7 +55,7 @@ const Value= (props) => {
   <Box w="100%" h="12" borderWidth="1px" borderStyle="solid" borderColor="grei">
   <Box pt="5px">
   <Center>
-      <Link to={`${location.pathname}/edit/${{itemId}}`}>
+      <Link to={`${location.pathname}/edit/${itemId}`}>
       <Button bg="edit" 
            _hover="null"
            size="md"

@@ -43,14 +43,14 @@ const ProductsScreen = () => {
                                         <Title title={'Products'}  />
                                     </Box>
                                           <Box pl="15px" w="80vw" h="40px" >
-                                             <Content name={'Name'} prop1={'Stock'} prop2={'Price'} />
+                                             <Content name={'Name'} prop1={'Inventory'} prop2={'Price'} />
                                              {products.map((product) => (
                                              <Value
                                               key={product._id}
                                               itemId={product._id} 
                                               name={product.name} 
-                                              prop1={product.stock} 
-                                              prop2={product.price}
+                                              prop1={`${product.stock} in stock`} 
+                                              prop2={`$${product.price}`}
                                               deleteAction={deleteHandler} />)
                                              )}
                                           </Box>

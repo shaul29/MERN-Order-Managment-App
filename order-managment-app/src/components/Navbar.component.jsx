@@ -19,7 +19,7 @@ const Navbar = () => {
     return (
         <>
         {isLargerThan480 ? 
-     <Box bg="secondary" h="100vh" w="250px">
+     <Box bg="secondary" h="100vh" w="250px" >
          <VStack>
          <Text color="white" align="center" fontWeight="bold" fontSize="2xl">Order Managment</Text>
          <Divider orientation="horizontal" />

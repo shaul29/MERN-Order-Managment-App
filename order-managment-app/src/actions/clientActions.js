@@ -12,6 +12,10 @@ import {
     CLIENT_LIST_ONE_REQUEST,
     CLIENT_LIST_ONE_SUCCESS,
     CLIENT_LIST_ONE_FAIL,
+    CLIENT_UPDATE_REQUEST,
+    CLIENT_UPDATE_SUCCESS,
+    CLIENT_UPDATE_FAIL,
+    CLIENT_UPDATE_RESET,
 } from '../constants/clientConstants'
 import axios from 'axios'
 
@@ -144,6 +148,49 @@ export const createClient = (client) => async (dispatch, getState) => {
     } catch (error) {
         dispatch({
             type: CLIENT_CREATE_FAIL,
+            payload:
+                error.response && error.response.data.message
+                    ? error.response.data.message
+                    : error.message,
+        })
+    }
+}
+
+export const updateClient = (client) => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: CLIENT_UPDATE_REQUEST,
+        })
+
+        const {
+            userLogin: { userInfo },
+        } = getState()
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${userInfo.token}`,
+            },
+        }
+
+        const { data } = await axios.put(
+            `/api/client/${client._id}`,
+            client,
+            config
+        )
+
+        dispatch({
+            type: CLIENT_UPDATE_SUCCESS,
+            payload: data,
+        })
+
+        dispatch({
+            type: CLIENT_UPDATE_RESET,
+        })
+
+    } catch (error) {
+        dispatch({
+            type: CLIENT_UPDATE_FAIL,
             payload:
                 error.response && error.response.data.message
                     ? error.response.data.message

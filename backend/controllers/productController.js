@@ -9,13 +9,15 @@ const createProduct = asyncHandler(async (req, res) => {
     const {
         name,
         stock,
-        price
+        price,
+        orderQty
     } = req.body
 
     const newProduct = new Product({
         name,
         stock,
         price,
+        orderQty,
         user: req.user._id,
     })
 
@@ -40,6 +42,7 @@ const updateProduct = asyncHandler(async (req, res) => {
         name,
         stock,
         price,
+        orderQty
     } = req.body
 
     const product = await Product.findById(req.params.id)
@@ -48,6 +51,7 @@ const updateProduct = asyncHandler(async (req, res) => {
         product.name = name
         product.stock = stock
         product.price = price
+        product.orderQty = orderQty
 
         const updatedproduct = await product.save()
         res.json(updatedproduct)
@@ -72,10 +76,50 @@ const deleteProduct = asyncHandler(async (req, res) => {
     }
 })
 
+// @desc    Update orderQty
+// @route   PUT /api/product/qty/:id
+// @access  Private
+const updateQty = asyncHandler(async (req, res) => {
+    const {
+        orderQty
+    } = req.body
+
+    const product = await Product.findById(req.params.id)
+
+    if (product) {
+
+        product.orderQty = orderQty
+        product.stock = product.stock - orderQty
+
+        const updatedproduct = await product.save()
+        res.json(updatedproduct)
+    } else {
+        res.status(404)
+        throw new Error('Product not found')
+    }
+})
+
+// @desc    Fetch single product
+// @route   GET /api/product/:id
+// @access  Public
+const getProductById = asyncHandler(async (req, res) => {
+    const product = await Product.findById(req.params.id)
+
+    if (product) {
+        res.json(product)
+    } else {
+        res.status(404)
+        throw new Error('Product not found')
+    }
+})
+
+
 
 export {
     createProduct,
     getMyProducts,
     updateProduct,
-    deleteProduct
+    deleteProduct,
+    getProductById,
+    updateQty
 }

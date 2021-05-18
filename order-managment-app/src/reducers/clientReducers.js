@@ -13,7 +13,11 @@ import {
     CLIENT_LIST_ONE_REQUEST,
     CLIENT_LIST_ONE_SUCCESS,
     CLIENT_LIST_ONE_FAIL,
-    CLIENT_LIST_ONE_RESET
+    CLIENT_LIST_ONE_RESET,
+    CLIENT_UPDATE_RESET,
+    CLIENT_UPDATE_FAIL,
+    CLIENT_UPDATE_SUCCESS,
+    CLIENT_UPDATE_REQUEST
 } from '../constants/clientConstants'
 
 export const clientListMyReducer = (state = { clients: [] }, action) => {
@@ -89,6 +93,21 @@ export const clientCreateReducer = (state = {}, action) => {
             return { loading: false, error: action.payload }
         case CLIENT_CREATE_RESET:
             return {}
+        default:
+            return state
+    }
+}
+
+export const clientUpdateReducer = (state = { client: {} }, action) => {
+    switch (action.type) {
+        case CLIENT_UPDATE_REQUEST:
+            return { loading: true }
+        case CLIENT_UPDATE_SUCCESS:
+            return { loading: false, success: true, client: action.payload }
+        case CLIENT_UPDATE_FAIL:
+            return { loading: false, error: action.payload }
+        case CLIENT_UPDATE_RESET:
+            return { client: {} }
         default:
             return state
     }

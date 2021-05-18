@@ -32,7 +32,9 @@ const createOrder = asyncHandler(async (req, res) => {
 // @route   GET /api/order/myOrders
 // @access  Private
 const getMyOrders = asyncHandler(async (req, res) => {
-    const orders = await Order.find({ user: req.user._id })
+    const orders = await Order.
+        find({ user: req.user._id }).
+        populate('qty')
     res.json(orders)
 })
 

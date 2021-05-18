@@ -7,11 +7,12 @@ import LoginScreen from './screens/LoginScreen'
 import ProductsScreen from './screens/product/ProductsScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import CreateClientScreen from './screens/client/CreateClientScreen';
-import EditClientScreen from './screens/client/EditClientScreen';
+import ClientEditScreen from './screens/client/ClientEditScreen';
 import Navbar from './components/Navbar.component';
 import { Flex } from '@chakra-ui/layout';
 import CreateProductScreen from './screens/product/CreateProductScreen';
 import CreateOrderScreen from './screens/order/CreateOrderScreen';
+import ProductEditScreen from './screens/product/ProductEditSreen'
 
 function App() {
   const userLogin = useSelector((state) => state.userLogin)
@@ -98,7 +99,18 @@ function App() {
                 !userInfo ? (
                   <Redirect to='/login' />
                 ) : (
-                  <EditClientScreen />
+                  <ClientEditScreen />
+                )
+              }
+            />
+            <Route
+              exact
+              path='/products/edit/:id'
+              render={() =>
+                !userInfo ? (
+                  <Redirect to='/login' />
+                ) : (
+                  <ProductEditScreen />
                 )
               }
             />

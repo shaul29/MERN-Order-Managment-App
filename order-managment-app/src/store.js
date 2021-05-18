@@ -9,19 +9,23 @@ import {
     clientListMyReducer,
     clientDeleteReducer,
     clientCreateReducer,
-    clientListOneReducer
+    clientListOneReducer,
+    clientUpdateReducer
 } from './reducers/clientReducers'
 import {
     productListMyReducer,
     productDeleteReducer,
-    productCreateReducer
+    productCreateReducer,
+    productUpdateReducer,
+    productUpdateQtyReducer,
+    productDetailsReducer
 } from './reducers/productReducers'
 
 import {
     orderListMyReducer,
     orderDeleteReducer,
     orderCreateReducer,
-    orderUpdateReducer
+    orderUpdateReducer,
 } from './reducers/orderReducers'
 
 const reducer = combineReducers({
@@ -29,15 +33,20 @@ const reducer = combineReducers({
     userRegister: userRegisterReducer,
     clientListMy: clientListMyReducer,
     clientDelete: clientDeleteReducer,
+    clientListOne: clientListOneReducer,
     clientCreate: clientCreateReducer,
+    clientUpdate: clientUpdateReducer,
     productListMy: productListMyReducer,
     productDelete: productDeleteReducer,
     productCreate: productCreateReducer,
+    productUpdate: productUpdateReducer,
+    productDetails: productDetailsReducer,
     orderListMy: orderListMyReducer,
     orderDelete: orderDeleteReducer,
     orderCreate: orderCreateReducer,
     orderUpdate: orderUpdateReducer,
-    clientListOne: clientListOneReducer
+    productUpdateQty: productUpdateQtyReducer,
+
 })
 
 

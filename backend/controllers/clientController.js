@@ -39,7 +39,7 @@ const getMyClients = asyncHandler(async (req, res) => {
 // @desc    Update a client
 // @route   PUT /api/client/:id
 // @access  Private
-const updateclient = asyncHandler(async (req, res) => {
+const updateClient = asyncHandler(async (req, res) => {
     const {
         name,
         lastName,
@@ -92,7 +92,7 @@ const getSingleClient = asyncHandler(async (req, res) => {
 export {
     createClient,
     getMyClients,
-    updateclient,
+    updateClient,
     deleteClient,
     getSingleClient
 }

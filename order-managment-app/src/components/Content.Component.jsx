@@ -6,7 +6,7 @@ const Content = (props) => {
     return (
         <Box bg="secondary"  alignItems="center" pt="8px" h="100%" w="100%">
             <Center>
-            <HStack spacing="140px">
+            <HStack spacing="180px">
                 <Box>
                     <Text color="white" fontWeight="bold">{name}</Text>
                 </Box>
@@ -17,10 +17,10 @@ const Content = (props) => {
                     <Text color="white" fontWeight="bold">{prop2}</Text>
                 </Box>
                 <Box>
-                    <Text color="white" fontWeight="bold">Eliminar</Text>
+                    <Text color="white" fontWeight="bold">Delete</Text>
                 </Box>
                 <Box>
-                    <Text color="white" fontWeight="bold">Editar</Text>
+                    <Text color="white" fontWeight="bold">Edit</Text>
                 </Box>
             </HStack>
             </Center>
