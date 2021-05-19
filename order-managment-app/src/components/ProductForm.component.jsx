@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router'
 import { createProduct } from '../actions/prodctActions'
 import Message from './Message.component'
-import Loader from './Spinner.component'
 
 const ProductForm = () => {
     const [name, setName] = useState('')
@@ -17,7 +16,7 @@ const ProductForm = () => {
     const dispatch = useDispatch()
 
     const productCreate = useSelector((state) => state.productCreate)
-    const { loading, error, success} = productCreate
+    const { error, success} = productCreate
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -25,14 +24,13 @@ const ProductForm = () => {
             createProduct({
                 name:name,
                 stock:stock,
-                price:price,
+                price:parseFloat(price.replace(/,/g, '')),
             })
         )
     }
 
     return (
         <form onSubmit={submitHandler}>
-            {loading && <Loader />}
             {success && <Redirect to="/products" /> }
             {error && <Message status='error' errorMessage={error} />}
           <FormControl id="name" >

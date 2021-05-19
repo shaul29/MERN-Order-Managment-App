@@ -11,7 +11,6 @@ const createOrder = asyncHandler(async (req, res) => {
         clientEmail,
         clientPhone,
         orderItems,
-        price
     } = req.body
 
     const newOrder = new Order({
@@ -19,7 +18,6 @@ const createOrder = asyncHandler(async (req, res) => {
         clientEmail,
         clientPhone,
         orderItems,
-        price,
         user: req.user._id,
     })
 

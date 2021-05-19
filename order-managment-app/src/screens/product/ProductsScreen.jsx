@@ -28,6 +28,12 @@ const ProductsScreen = () => {
         
     }, [ dispatch])
 
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2
+      })
+
    if(loading){
        return <Loader />
    }
@@ -50,7 +56,7 @@ const ProductsScreen = () => {
                                               itemId={product._id} 
                                               name={product.name} 
                                               prop1={`${product.stock} in stock`} 
-                                              prop2={`$${product.price}`}
+                                              prop2={formatter.format(product.price)}
                                               deleteAction={deleteHandler} />)
                                              )}
                                           </Box>

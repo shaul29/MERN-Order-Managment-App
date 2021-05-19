@@ -197,7 +197,7 @@ export const getProductDetails = (id) => async (dispatch) => {
     }
 }
 
-export const updateProductQty = (product) => async (dispatch, getState) => {
+export const updateProductQty = (product) => async (dispatch) => {
     try {
         dispatch({
             type: PRODUCT_UPDATEQTY_REQUEST,

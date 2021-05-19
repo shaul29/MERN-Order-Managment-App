@@ -15,7 +15,7 @@ const productSchema = mongoose.Schema(
             required: true,
         },
         orderQty: {
-            type: Number
+            type: Number,
         },
         user: {
             type: mongoose.Schema.Types.ObjectId,

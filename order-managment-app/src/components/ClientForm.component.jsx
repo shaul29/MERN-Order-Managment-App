@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router'
 import { createClient } from '../actions/clientActions'
 import Message from './Message.component'
-import Loader from './Spinner.component'
+
 
 const ClientForm = ({ history }) => {
     const [name, setName] = useState('')
@@ -19,7 +19,7 @@ const ClientForm = ({ history }) => {
     const dispatch = useDispatch()
 
     const clientCreate = useSelector((state) => state.clientCreate)
-    const { loading, error, success} = clientCreate
+    const { error, success} = clientCreate
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -36,7 +36,6 @@ const ClientForm = ({ history }) => {
 
     return (
         <form onSubmit={submitHandler}>
-            {loading && <Loader />}
             {success && <Redirect to="/clients" /> }
             {error && <Message status='error' errorMessage={error} />}
           <FormControl id="first-name" >

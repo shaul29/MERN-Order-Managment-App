@@ -35,6 +35,13 @@ const OrdersScreen = () => {
         
     }, [ dispatch])
 
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2
+      })
+
+
    if(loading){
        return <Loader />
    }
@@ -89,7 +96,10 @@ const OrdersScreen = () => {
                                     pt="15px" 
                                     color="secondary" 
                                     fontWeight="bold">
-                                        {`Total Price: $${order.price}`}
+                                        {
+                                        `Total Price: ${formatter.format(order.orderItems.reduce((acc, item) => 
+                                             acc + item.totalPrice, 0 ))} `
+                                         }
                                      </Text>
                                     <Button 
                                      bg="delete" 

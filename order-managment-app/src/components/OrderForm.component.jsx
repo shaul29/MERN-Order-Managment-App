@@ -1,6 +1,5 @@
 import { Button } from '@chakra-ui/button'
 import { FormControl, FormLabel } from '@chakra-ui/form-control'
-import { Input } from '@chakra-ui/input'
 import { Box, HStack, Text, VStack } from '@chakra-ui/layout'
 import { Select } from '@chakra-ui/select'
 import React, { useEffect, useRef, useState } from 'react'
@@ -8,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Redirect } from 'react-router'
 import { listMyClients, listOneClient } from '../actions/clientActions'
 import { createOrder } from '../actions/orderActions'
-import { listMyProducts } from '../actions/prodctActions'
+import { listMyProducts, updateProductQty } from '../actions/prodctActions'
 import Message from './Message.component'
 import Loader from './Spinner.component'
 import MultiSelect from 'react-select'
@@ -17,8 +16,6 @@ const OrderForm = () => {
     const [myClient, setmyClient] = useState('')
     const [product, setProduct] = useState([])
     const [quantity, setQuantity] = useState([])
-
-   const price = product.reduce((acc, item) => acc + item[1], 0)
 
     const isInitialMount = useRef(true);
 
@@ -65,12 +62,19 @@ const OrderForm = () => {
                         {   key:item[3],
                             item:item[0],
                             quantity:quantity.find(qty => qty.id === item[3]).qty,
-                            itemId:item[3]
+                            itemId:item[3],
+                            itemPrice:item[1],
+                            totalPrice: quantity.find(qty => qty.id === item[3]).qty * item[1]
                         }
-                    )),
-                price:price
+                    ))
             })
         )
+        product.map((item) => {
+               return dispatch(updateProductQty({
+                  _id: item[3],
+                  orderQty: quantity.find(qty => qty.id === item[3]).qty
+              }))
+        })
         }
 
         const submitProducts = (e) => {
@@ -88,9 +92,7 @@ const OrderForm = () => {
             ]);
           };
 
-          console.log(quantity)
 
-        
     if( loading || loadingClients || loadingProducts  ) {
     return <Loader />
          }
@@ -154,12 +156,7 @@ const OrderForm = () => {
                   </HStack>
               ))}
           </FormControl>
-          <FormControl id="Price" >
-              <FormLabel>Tota Price</FormLabel>
-                   <Input
-                      placeholder='Price'
-                      value={`$${price}`} />
-          </FormControl>
+          
              <Button type='submit' bg="secondary" w="100%" mt="10px" borderRadius="0px" _hover="null"><Text color="white">SUBMIT</Text></Button>
         </form>
     )
