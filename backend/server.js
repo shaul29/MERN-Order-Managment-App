@@ -22,9 +22,6 @@ app.use('/api/client', clientRoutes)
 app.use('/api/product', productRoutes)
 app.use('/api/order', orderRoutes)
 
-app.use(notFound)
-app.use(errorHandler)
-
 const __dirname = path.resolve()
 
 if (process.env.NODE_ENV === 'production') {
@@ -38,6 +35,9 @@ if (process.env.NODE_ENV === 'production') {
         res.send('API is running....')
     })
 }
+
+app.use(notFound)
+app.use(errorHandler)
 
 const PORT = process.env.PORT || 5000
 
