@@ -134,11 +134,11 @@ const OrderForm = () => {
                   onChange={submitProducts}
                   />
           </FormControl>
-          <FormControl id="quantity" >
+          <FormControl id="quantity" pt="15px" >
               {product.map((item) => (
                   <HStack pb="8px" key={item[3]}>
                       <Box>
-                          <VStack spacing="0px">
+                          <VStack spacing="0px" >
                               <Text>{item[0]}</Text>
                               <Text>{`$${item[1]}`}</Text>
                           </VStack>

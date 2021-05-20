@@ -9,6 +9,7 @@ import Title from '../../components/Title.component'
 import { AiOutlineMail } from 'react-icons/ai'
 import { FiPhone } from 'react-icons/fi'
 import Message from '../../components/Message.component'
+import EmptyOrder from '../../components/EmptyOrder.component'
 
 const OrdersScreen = () => {
 
@@ -45,20 +46,31 @@ const OrdersScreen = () => {
    if(loading){
        return <Loader />
    }
-    
+
     return (
         <VStack>
+            { Array.isArray(orders) && orders.length !== 0 &&
             <Box h="100px">
                 <Head />
-            </Box>
+            </Box>}
+            { Array.isArray(orders) && orders.length !== 0 &&
                  <Box >
                     <Title title={'Orders'}  />
-                 </Box>
+                 </Box>}
                  {error && <Message status='error' errorMessage={error} />}
                  {deleteError && <Message status='error' errorMessage={error} />}
+                 {Array.isArray(orders) && orders.length === 0 ? <EmptyOrder /> : 
                  <Box pl={5} >
                      {orders.map((order) => (
-                <Box p={5} shadow="md" borderWidth="1px" w={[300, 500, 1070]} h="40vh" overflow= "hiden" key={order._id}>
+                <Box p={5} 
+                shadow="md"
+                 borderWidth="1px" 
+                 w={[300, 500, 1070]} 
+                 h="40vh" 
+                 overflow= "hiden" 
+                 key={order._id} 
+                 borderTopWidth="3px" 
+                 borderTopColor={order.isDelivered ? '#228B22' : 'secondary'}>
                         <Flex >
                             <Box>
                                 <VStack>
@@ -110,10 +122,13 @@ const OrdersScreen = () => {
                                 </VStack>
                             </Box>
                         </Flex>
-                </Box> ))}
-
-                </Box>
-        </VStack>
+                     
+                  </Box>
+                 ))}
+               </Box> 
+}
+        </VStack>   
+                                                                                                                                                  
     )
 }
 

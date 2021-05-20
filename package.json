@@ -19,7 +19,8 @@
     "start": "node backend/server",
     "server": "nodemon backend/server",
     "client": "yarn --cwd order-managment-app start",
-    "dev": "concurrently -k \"yarn server\" \"yarn client\""
+    "dev": "concurrently -k \"yarn server\" \"yarn client\"",
+    "heroku-postbuild": "YARN_PRODUCTION=false yarn install && yarn --cwd ./order-managment-app install && yarn --cwd ./order-managment-app run build"
   },
   "devDependencies": {
     "concurrently": "^6.0.2",
